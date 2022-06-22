@@ -1,0 +1,13 @@
+// .....::::::HELPERS::::::.....
+@import "style-helpers/colors";
+@import "style-helpers/layout";
+
+
+
+// .....::::::COMPONENTS::::::.....
+//LAYOUT
+@import "components/layout/header/header";
+
+// .....::::::PAGES::::::.....
+//LAYOUT
+@import "components/pages/search/page-search"

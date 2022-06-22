@@ -2,9 +2,11 @@ import React from 'react'
 
 
 function PageSearch() {
-  return (
-    <div>PageSearch</div>
-  )
+    return (
+        <div className='page-search'>
+            PageSearch
+        </div>
+    )
 }
 
 export default PageSearch

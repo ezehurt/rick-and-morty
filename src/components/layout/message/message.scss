@@ -1,0 +1,22 @@
+.message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 640px;
+    &__image{
+        max-width: 640px;
+    }
+    &__title{
+        @extend .heading-large;
+        color: color(font,100);
+        margin: 0;
+        text-align: center;
+    }
+    &__message{
+        @extend .text-large;
+        color: color(font,100);
+        margin: 0;
+        text-align: center;
+    }
+}

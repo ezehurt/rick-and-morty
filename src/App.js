@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import { ConnectedRouter } from 'connected-react-router';
+import { Route, Switch } from 'react-router-dom';
+import storeFactory from "./state/store";
+import customHistory from './common/history';
+import PageSearch from './components/pages/search/PageSearch';
+import messages from "./www/config/messages.json";
+import './App.scss';
+import { Provider } from 'react-redux';
+import { IntlProvider } from 'react-intl';
+import Header from './components/layout/header/Header';
+
+export const LOCALE = "es";
+
+export const AppWrapper = () => {
+  const store = storeFactory();
+
+  return (
+    <IntlProvider locale={LOCALE} messages={messages}>
+      <Provider store={store}>
+        <App store={store} />
+      </Provider>
+    </IntlProvider>
+  )
+}
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <ConnectedRouter history={customHistory}>
+        <Header />
+        <Switch>
+          <Route
+            path={"/"}
+          >
+            <PageSearch />
+          </Route>
+        </Switch>
+      </ConnectedRouter>
     </div>
   );
 }

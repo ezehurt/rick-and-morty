@@ -1,0 +1,17 @@
+.card-item {
+    margin-bottom: 12px;
+    &__title {
+        margin:0 0 4px 0;
+        @extend .text-medium;
+        font-weight: 700;
+        color: color(font,300);
+    }
+    &__description {
+        margin:0;
+        @extend .text-medium;
+        color: color(font,300);
+    }
+    &:last-of-type{
+        margin-bottom: 0px;
+    }
+}

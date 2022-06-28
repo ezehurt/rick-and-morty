@@ -1,0 +1,23 @@
+.page-search {
+    @extend .page;
+    &__result-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 10px;
+        margin: 20px;
+        @include breakpoint(mobile){
+            grid-template-columns: 1fr;
+        }
+    }
+    &__centered-content{
+        display: flex;
+        justify-content: center;
+        .spinner__image{
+            width: 40px;
+        }
+    }
+    .message{
+        display: flex;
+        justify-content: center;
+    }
+}

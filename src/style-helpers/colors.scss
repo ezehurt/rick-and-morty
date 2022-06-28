@@ -1,0 +1,40 @@
+$white: #fff;
+$black: #000;
+
+$colors:(
+    primary:(
+        300: #c6dae7,
+        400: #99c7e6,
+        500:#0a77c1,
+    ),
+    border:
+    (
+        300: #e9eff8,
+        400: #e1e8f1,
+        500: #c4d1e6,
+        600: #c7c7c7,
+        700: #707070
+    ),
+    grey:(
+        500:#9f9f9f
+    ),
+    font: (
+        0: white,
+        50: #f1f1f1,
+        100: #757575,
+        200: #2c2c2c,
+        300: #202020,
+        inactive: #ADADAD,
+    ),
+    status: (
+        alive: #268e00,
+        dead: #c40000,
+        unknown: #757575,
+    )
+)
+;
+
+
+@function color($color, $tone: "base"){
+    @return map-get(map-get($colors,$color), $tone);
+}

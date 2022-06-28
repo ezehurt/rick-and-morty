@@ -7,12 +7,16 @@ import { useLocation } from 'react-router-dom';
 import { SEARCH_CHARACTERS } from '../../../apollo/queries/characters';
 import { decodeSearchParams } from '../../../common/utils/urlUtils';
 import { onChangeTerm } from '../../../state/search';
-import AutoSuggestionSearchbar from '../../searchbar/autosuggestion-searchbar/AutoSuggestionSearchbar'
+import AutoSuggestionSearchbar from '../../searchbar/autosuggestion-searchbar/AutoSuggestionSearchbar';
+import CharacterCard from '../../character-card/CharacterCard';
+import Spinner from '../../../widget/spinner/Spinner'
+import Message from '../../layout/message/Message';
+import { WELCOME_IMG } from '../../../common/constans/images';
 
 
 
 function PageSearch() {
-    
+
     const intl = useIntl();
     const location = useLocation();
     const dispatch = useDispatch();
@@ -23,8 +27,7 @@ function PageSearch() {
     } = decodeSearchParams(location.search);
 
     useEffect(() => {
-        console.log("term",term)
-        if(term){
+        if (term) {
             getCharacters({
                 fetchPolicy: "no-cache",
                 variables: {
@@ -38,13 +41,12 @@ function PageSearch() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [params, term]);
 
-    const [getCharacters, { data }] = useLazyQuery(SEARCH_CHARACTERS);
+    const [getCharacters, { data, loading }] = useLazyQuery(SEARCH_CHARACTERS);
 
 
     useEffect(() => {
-        console.log("data", data)
-         // eslint-disable-next-line react-hooks/exhaustive-deps
-     }, [data]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [data]);
 
 
     return (
@@ -57,6 +59,27 @@ function PageSearch() {
                     })}
                 />
             </div>
+            {data && <div className='page-search__result-list'>
+                {data.characters.results.map((character) => (
+                    <CharacterCard
+                        key={character.id}
+                        title={character.name}
+                        imgAlt={`img-${character.name}`}
+                        imgSrc={character.image}
+                        status={character.status}
+                        specie={character.species}
+                        firstSeenIn={character.origin.name}
+                        lastKnowLocation={character.location.name}
+                    />
+                ))}
+            </div>}
+            {!data && <div className='page-search__centered-content'>
+                <Message
+                    imgSrc={WELCOME_IMG}
+                    imgAlt="welcome-message"
+                    title={intl.formatMessage({ id: "welcome.title" })}
+                    message={intl.formatMessage({ id: "welcome.message" })} /></div>}
+            {loading && <Spinner className='page-search__centered-content' />}
         </main>
     )
 }

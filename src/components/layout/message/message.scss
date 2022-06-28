@@ -11,10 +11,12 @@
         @extend .heading-large;
         color: color(font,100);
         margin: 0;
+        text-align: center;
     }
     &__message{
         @extend .text-large;
         color: color(font,100);
         margin: 0;
+        text-align: center;
     }
 }

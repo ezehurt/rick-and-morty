@@ -2,6 +2,9 @@
     display: flex;
     justify-content: center;
     min-width: 400px;
+    @include breakpoint(mobile) {
+        min-width: 320px;
+    }
     &__button{
         border: 0;
         background-color: color(primary,500);

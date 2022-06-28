@@ -1,12 +1,12 @@
 import { gql } from "@apollo/client";
-import { CHARACTERS_CORE } from "../fragments/characters";
+import { CHARACTERS_CORE, CHARACTERS_LOCATION_FIELDS, CHARACTERS_SUGGESTIONS_FIELDS } from "../fragments/characters";
 
 export const GET_SUGGESTED_CHARACTERS = gql`
-    ${CHARACTERS_CORE}
+    ${CHARACTERS_SUGGESTIONS_FIELDS}
     query characters($page: Int, $filter: FilterCharacter){
         characters(page: $page, filter:$filter){
            results{
-             ...charactersCoreFields
+             ...characterSuggestionFields
            }
         }
     }
@@ -14,10 +14,17 @@ export const GET_SUGGESTED_CHARACTERS = gql`
 
 export const SEARCH_CHARACTERS = gql`
     ${CHARACTERS_CORE}
+    ${CHARACTERS_LOCATION_FIELDS}
     query characters($page: Int, $filter: FilterCharacter){
         characters(page: $page, filter:$filter){
            results{
-             ...charactersCoreFields
+             ...characterCoreFields,
+             origin {
+              ...characterLocationFields
+             }
+             location {
+              ...characterLocationFields
+             }
            }
         }
     }

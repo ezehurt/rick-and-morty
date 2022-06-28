@@ -1,9 +1,9 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import PropTypes from "prop-types";
 
-// Input field that recieves a suggestion on pressing tab triggers onChange with the suggestions asumming that it will be autocomplete
+// Input field that receives the value to be filled
 function AutocompleteInput({
-    value,
+    value = "",
     placeholder,
     onChange,
     onClear,

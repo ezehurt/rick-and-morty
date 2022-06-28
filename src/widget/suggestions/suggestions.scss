@@ -1,0 +1,19 @@
+.suggestion{
+    &__wrapper{
+        position: absolute;
+        width: 400px;
+        max-height: 400px;
+        overflow-y: scroll;
+        background-color: $white;
+    }
+    &__title{
+        @extend .text-medium;
+        margin: 0;
+        padding: 8px;
+        color: color(grey,500);
+    }
+    &__list{
+        padding: 0;
+        margin: 0;
+    }
+}

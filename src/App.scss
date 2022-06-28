@@ -10,14 +10,30 @@
 //LAYOUT
 @import "components/layout/header/header";
 @import "components/layout//message/message";
-// .....::::::PAGES::::::.....
+@import "components/searchbar/autosuggestion-searchbar/autosuggestion-searchbar";
+
+// .....::::::PAGES::::::.....s
 //LAYOUT
 @import "components/pages/search/page-search";
 
 
 
+// .....::::::WIDGETS::::::.....
+@import "widget/autocomplete-form/autocomplete-form";
+@import "widget/autocomplete-input/autocomplete-input";
+@import "widget/button/action-button/action-button";
+@import "widget/button/cancel-button/cancel-button";
+@import "widget/suggestions/suggestions";
+@import "widget/suggestions/suggestion-item/suggestion-item";
+@import "widget/spinner/spinner";
 
-// .....::::::PAGES::::::.....
+
+
+
+
+
+
+// .....::::::FONT::::::.....
 @font-face {
     font-family: 'Roboto';
     src: local('Roboto'), url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap") format('truetype');

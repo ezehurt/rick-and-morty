@@ -1,0 +1,17 @@
+.autocomplete-form{
+    display: flex;
+    justify-content: center;
+    min-width: 400px;
+    &__button{
+        border: 0;
+        background-color: color(primary,500);
+        border: 0;
+        height: 40px;
+        width: 50px;
+        svg{
+            path{
+                fill: $white;
+            }
+        }
+    }
+}

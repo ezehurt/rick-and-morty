@@ -31,7 +31,6 @@ function App() {
         <Header />
         <Switch>
           <Route
-            exact
             path={"/"}
           >
             <PageSearch />

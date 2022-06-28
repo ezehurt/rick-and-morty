@@ -1,0 +1,27 @@
+.suggestion {
+    &__item{
+        display: flex;
+        align-items: center;
+        border: none;
+        background: $white;
+        list-style: none;
+        padding: 0px 8px;
+        margin-bottom: 2px;
+        cursor: pointer;
+        &:hover{
+            background-color: color(primary,300);
+        }
+        &--focused{
+            @extend .suggestion__item;
+            background-color: color(primary,300);
+        }
+        img {
+            width: 32px;
+            border-radius: 100%;
+        }
+        p{
+            margin: 2px;
+            padding-left: 8px;
+        }
+    }
+}

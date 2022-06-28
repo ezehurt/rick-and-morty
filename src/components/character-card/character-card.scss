@@ -1,0 +1,41 @@
+.character-card{
+    display: flex;
+    border: 1px solid color(border,500);
+    img{
+        width: 172px;
+        height: 172px;
+    }
+    &__content{
+        padding: 8px 20px;
+    }
+    &__title{   
+            margin: 0 0 8px 0px;
+            @extend .heading-large;
+            color: color(font,100);
+    }
+    &__subtitle{
+        display: flex;
+        align-items: center;
+        margin-bottom: 22px ;
+        p{
+            margin: 0;
+            padding-left: 8px;
+        }
+    }
+}
+
+.character-status {
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    background-color: color(status, unknown);
+    &--alive {
+        @extend .character-status;
+        background-color: color(status, alive)
+    }
+    &--dead {
+        @extend .character-status;
+        background-color: color(status, dead)
+    }
+}
+

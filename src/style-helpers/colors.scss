@@ -25,6 +25,11 @@ $colors:(
         200: #2c2c2c,
         300: #202020,
         inactive: #ADADAD,
+    ),
+    status: (
+        alive: #268e00,
+        dead: #c40000,
+        unknown: #757575,
     )
 )
 ;

@@ -53,25 +53,57 @@ As a frontend developer is really important to pay attention and be part of this
 2. Basic behaiviour.
 3. Early identify undoable stuff.
 #### Organizing stuff, planning and estimating.
-Once we have the functional requirements and the ux/ui we need to organize the stuff and have a plan. In this case, this small challenge could be seen as one user story "**As** an user, **I want** to search by name Rick and Morty's characters **fpr** watch the results". The acceptance criterias of the story was defined by the challenge and basically are 4:
+Once we have the functional requirements and the ux/ui we need to organize the stuff and have a plan. In this case, this small challenge could be seen as one user story "**As** an user, **I want** to search by name Rick and Morty's characters **fpr** watch the results". The acceptance criterias of the story was defined by the challenge and basically are:
   - When user types something into the searchbar they should be presented with suggeste character names.
   - If pressing enter, the character results should be display.
   - If user click on the suggestion, the result should be shown.
 It seems to be short and easy user story, but anyway needs some work and planning. A Trello board was created to manage the proyect. Task were created, tagged by type, prioritazed, etc.
-#### Hands on mud
-##### React with redux.
-To solve the challenge I decided to start we
-##### Github with "git flow"
-##### Storybook
+### Hands on mud
+#### React project.
+##### Version
+To solve the challenge I decided to start with create-react-app tool. The project was created in the 18 version, but after some weird behaivours that I didn't want to handle it (because of time) I had to downgrade the version to the most known by me.  
+##### Project structure
+The project have a basic structre:
+-src
+--apollo <- for configuring apollo client, fragments and mutations
+--common <- basic common stuff like utils, constans and route history
+--components <- components that be reused
+--hooks <- hooks. I always check on [react-use](https://github.com/streamich/react-use) and sometimes copy all and sometimes take as starting point
+--state <- The redux store and state management
+--stories <- default stortbook folder.
+--style-helpers <- basic styling for share, mixins, etc
+--widgets <- litle piece of code with no state such as buttons, etc.
+
+##### Unit testing
+Normally every component should have a unit testing and also there are metrics to achieve regarding test coverage. For this challenge I wrote just one test for the [MessageComponent](https://github.com/ezehurt/rick-and-morty/blob/main/src/components/layout/message/Mesage.test.jsx)
+
+##### The states
+There many ways to manage the state of one app. Always trying to avoid complexity. For this case I decided to mantain the state in 3 differents ways.
+- The url state
+This is something desirable when you try to have a consistency between the app state and the url. In some, sometimes is good for users to share directly the link with other users. When others users paste the url on their browsers, the parameters are got and the app will start loading and requesting all the necesary stuff to show the user the same. e.g If you pase this on your browser, you will se the same search term and results(if anything on the search response change) [DEMO APP LINK](https://bayer-challenge-eh.web.app/q?q=rick). Pay attention that the search term is "rick" and remains on the url 
+- The redux state
+The application have the redux-toolkit for managing the store, with slices, action creators, selectos. You can see an example [search state](https://github.com/ezehurt/rick-and-morty/blob/main/src/state/search.js). Where the "paginationInfo" is used in the [SearchComponent](https://github.com/ezehurt/rick-and-morty/blob/main/src/components/pages/search/PageSearch.jsx)
+- Component state (useState)
+#### Github with "git flow"
+For source control versioning, I used github basically with a main branch, a development branch and "features" branches.
+#### Storybook
+Storybook is great and is one of the tools that are really close tu ux/ui. Trying to be the "design system source of truth", small components with no other logic than the behaviour are displayed there. Developers can access the storybook, see how components works, change styles and directly copy code to paste on their IDE. You can see the storybook for this project here
 #### Cypress
+#### Styling, scss, grid-flexbox combination
+In the project I installed node-sass to get all it benefits of variables and functions. Also a combination of flexbox and grid where done. You can check for example [here](https://github.com/ezehurt/rick-and-morty/blob/main/src/components/searchbar/autosuggestion-searchbar/autosuggestion-searchbar.scss) where the background is setted on the same "place" of the autosuggestionbar. 
+
 
 ### Restrictions of the challenge.
 #### The API.
 One of the acceptance criteria of the app if to show suggestions by character names to the user. Those suggestions can more or less be done but I personally don't like how is it. Normally it should be a grapqhl query to get suggestions. You send the term and depending on the type of search you choose(for this example only by name) you get the suggestions. Or going further, maybe you can write a term and you get suggestions of many types, e.g. If you write "rick", you can get suggestions of name, episodes, locations and in the suggestions menu showed in the app, diff them with icons, etc. Doing more likely a fulltext search with differents suggestions types.
 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
 ### Tools
+#### Chrome Developers tool 
+#### Extensions
+#### Css Grid
+#### Visual Studio Code
+#### SourceTree
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+

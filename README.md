@@ -40,6 +40,9 @@ Instead, it will copy all the configuration files and the transitive dependencie
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
 ## About the resolution of the challenge
+
+The app is deployed on Firebase hosting. [Click here to visit it](https://bayer-challenge-eh.web.app/)
+
 ### Functional Requirements.
 "**As** an user, **I want** to search by name Rick and Morty's characters **fpr** watch the results"
 ### Non Functional Requirements.
@@ -91,7 +94,7 @@ For source control versioning, I used github basically with a main branch, a dev
 ![git-1](https://user-images.githubusercontent.com/7167879/176379090-6acdfd48-7094-4725-892d-abffa8d2ee2b.png)
 
 #### Storybook
-Storybook is great and is one of the tools that are really close tu ux/ui. Trying to be the "design system source of truth", small components with no other logic than the behaviour are displayed there. Developers can access the storybook, see how components works, change styles and directly copy code to paste on their IDE. You can see the storybook for this project here.
+Storybook is great and is one of the tools that are really close tu ux/ui. Trying to be the "design system source of truth", small components with no other logic than the behaviour are displayed there. Developers can access the storybook, see how components works, change styles and directly copy code to paste on their IDE. You can see the storybook for this project [here](https://storybook-bayer-challenge-eh.web.app/?path=/story/components-charactercard--default). You can play around with some components
 ![storybook-1](https://user-images.githubusercontent.com/7167879/176379122-d54d047e-5211-475c-bfd7-17afd2d6ec39.png)
 
 #### Cypress

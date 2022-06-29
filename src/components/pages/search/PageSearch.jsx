@@ -62,9 +62,9 @@ function PageSearch() {
                     })}
                 />
             </div>
-            {data &&
+            {data && paginationInfo &&
                 <div className='page-search__subheader'>
-                    <ResultHeader amount={paginationInfo.count} />
+                    <ResultHeader amount={paginationInfo?.count} />
                 </div>
             }
             {data && data.characters.results.length > 0 && <div className='page-search__result-list'>

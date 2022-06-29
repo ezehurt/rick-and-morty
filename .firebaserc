@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "default": "bayer-challenge-eh"
+  },
+  "targets": {
+    "bayer-challenge-eh": {
+      "hosting": {
+        "search-app": [
+          "bayer-challenge-eh"
+        ],
+        "storybook-app": [
+          "storybook-bayer-challenge-eh"
+        ]
+      }
+    }
+  }
+}

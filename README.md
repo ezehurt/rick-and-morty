@@ -40,7 +40,35 @@ Instead, it will copy all the configuration files and the transitive dependencie
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
 ## ABOUT THE RESOLUTION OF THE CHALLENGE
+### Functional Requirements.
+"**As** an user, **I want** to search by name Rick and Morty's characters **fpr** watch the results"
+### Non Functional Requirements.
+Nothing was said about the end device where the application will run. Because the app is for searching and I think in the company the one that could use the app are researchers from their desktop PC, no many optimization for running on mobile where done. Even dough some breakpoints and good practices for responsiveness where done, is not optimizated.
+There basics non functional requirements that are related to performance, mantainability, etc. are tried to be achieved by software practices and patterns into the code.
 ### The Process
+#### Prerequisites
+Apart from the requiremets also for frontend development the suer experience and user interface is needed. For the UI a basic design was done in AdobeXD and then exported to Zeplin. In case of UX (overflow)
+As a frontend developer is really important to pay attention and be part of this process for many reasons:
+1. Designers also split the application in small components and you get a first impression of how many components will have the app, first approach to reusability, etc.
+2. Basic behaiviour.
+3. Early identify undoable stuff.
+#### Organizing stuff, planning and estimating.
+Once we have the functional requirements and the ux/ui we need to organize the stuff and have a plan. In this case, this small challenge could be seen as one user story "**As** an user, **I want** to search by name Rick and Morty's characters **fpr** watch the results". The acceptance criterias of the story was defined by the challenge and basically are 4:
+  - When user types something into the searchbar they should be presented with suggeste character names.
+  - If pressing enter, the character results should be display.
+  - If user click on the suggestion, the result should be shown.
+It seems to be short and easy user story, but anyway needs some work and planning. A Trello board was created to manage the proyect. Task were created, tagged by type, prioritazed, etc.
+#### Hands on mud
+##### React with redux.
+To solve the challenge I decided to start we
+##### Github with "git flow"
+##### Storybook
+#### Cypress
+
+### Restrictions of the challenge.
+#### The API.
+One of the acceptance criteria of the app if to show suggestions by character names to the user. Those suggestions can more or less be done but I personally don't like how is it. Normally it should be a grapqhl query to get suggestions. You send the term and depending on the type of search you choose(for this example only by name) you get the suggestions. Or going further, maybe you can write a term and you get suggestions of many types, e.g. If you write "rick", you can get suggestions of name, episodes, locations and in the suggestions menu showed in the app, diff them with icons, etc. Doing more likely a fulltext search with differents suggestions types.
+
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 

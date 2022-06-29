@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     term: "",
+    paginationInfo: null
 }
 
 const appSlice = createSlice({
@@ -11,11 +12,15 @@ const appSlice = createSlice({
         onChangeTerm: (state, {payload:term}) => {
             state.term = term
         },
+        setPaginationInfo: (state, {payload}) => {
+            state.paginationInfo = payload
+        },
     }
 })
 
 export const {
-    onChangeTerm
+    onChangeTerm,
+    setPaginationInfo
 } = appSlice.actions
 
 
@@ -23,3 +28,4 @@ export const {
 export default appSlice.reducer;
 
 export const termSelector = (state) => state.search.term;
+export const paginationInfoSelector = (state) => state.search.paginationInfo;

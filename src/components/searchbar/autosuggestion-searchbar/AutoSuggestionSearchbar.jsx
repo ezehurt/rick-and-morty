@@ -14,7 +14,6 @@ function AutoSuggestionSearchbar({
     className,
     initialTerm,
     placeholder,
-    onClear = (f) => f,
 }) {
     const [suggestions, setSuggestions] = useState(false);
     const [selectedValue, setSelectedValue] = useState(false);
@@ -85,6 +84,9 @@ function AutoSuggestionSearchbar({
     }, [searchTerm, suggestionData]);
 
     const handleSubmit = (searchTerm) => {
+        if(!searchTerm){
+            return;
+        }
         const newURL = generateSearchString({
             context:"",
             term: searchTerm
@@ -92,6 +94,10 @@ function AutoSuggestionSearchbar({
         });
         setShowSuggestions(false);
         history.push(newURL);
+    }
+
+    const handleClear = () => {
+        history.push("")
     }
 
     return (
@@ -111,7 +117,7 @@ function AutoSuggestionSearchbar({
                         onSubmit={handleSubmit}
                         value={searchTerm}
                         setValue={handleSetValue}
-                        onClear={onClear}
+                        onClear={handleClear}
                         placeholder={placeholder}
                     />
                     {showSuggestions && (
@@ -123,7 +129,6 @@ function AutoSuggestionSearchbar({
                             onClick={handleSetSuggestedValue}
                             icon="search"
                             highlight={searchTerm}
-                            initialySelected={-1}
                         />
                     )}
                 </div>

@@ -1,17 +1,18 @@
-import { useLazyQuery, useQuery } from '@apollo/client';
+import { useLazyQuery } from '@apollo/client';
 import React, { useEffect } from 'react'
 import { useIntl } from 'react-intl'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { SEARCH_CHARACTERS } from '../../../apollo/queries/characters';
 import { decodeSearchParams } from '../../../common/utils/urlUtils';
-import { onChangeTerm } from '../../../state/search';
+import { onChangeTerm, paginationInfoSelector, setPaginationInfo } from '../../../state/search';
 import AutoSuggestionSearchbar from '../../searchbar/autosuggestion-searchbar/AutoSuggestionSearchbar';
 import CharacterCard from '../../character-card/CharacterCard';
 import Spinner from '../../../widget/spinner/Spinner'
 import Message from '../../layout/message/Message';
 import { WELCOME_IMG } from '../../../common/constans/images';
+import ResultHeader from './result-header/ResultHeader';
 
 
 
@@ -21,6 +22,7 @@ function PageSearch() {
     const location = useLocation();
     const dispatch = useDispatch();
     const params = useParams();
+    const paginationInfo = useSelector(paginationInfoSelector)
 
     const {
         term
@@ -45,21 +47,27 @@ function PageSearch() {
 
 
     useEffect(() => {
+        if (data) {
+            dispatch(setPaginationInfo(data.characters?.info));
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data]);
-
 
     return (
         <main className='page-search'>
             <div className='page-search__header'>
                 <AutoSuggestionSearchbar
-                    className="page-search__subheader"
                     placeholder={intl.formatMessage({
                         id: "autocomplete.placeholder",
                     })}
                 />
             </div>
-            {data && <div className='page-search__result-list'>
+            {data &&
+                <div className='page-search__subheader'>
+                    <ResultHeader amount={paginationInfo.count} />
+                </div>
+            }
+            {data && data.characters.results.length > 0 && <div className='page-search__result-list'>
                 {data.characters.results.map((character) => (
                     <CharacterCard
                         key={character.id}
@@ -73,7 +81,15 @@ function PageSearch() {
                     />
                 ))}
             </div>}
-            {!data && <div className='page-search__centered-content'>
+            {data && data.characters.results.length === 0 &&
+                <div className='page-search__centered-content'>
+                    <Message
+                        imgSrc={WELCOME_IMG}
+                        imgAlt="welcome-message"
+                        title={intl.formatMessage({ id: "no-result.title" })}
+                        message={intl.formatMessage({ id: "no-result.message" }, { searchTerm: term })} /></div>
+            }
+            {!data && !loading && <div className='page-search__centered-content'>
                 <Message
                     imgSrc={WELCOME_IMG}
                     imgAlt="welcome-message"

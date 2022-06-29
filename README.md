@@ -95,6 +95,9 @@ Storybook is great and is one of the tools that are really close tu ux/ui. Tryin
 ![storybook-1](https://user-images.githubusercontent.com/7167879/176379122-d54d047e-5211-475c-bfd7-17afd2d6ec39.png)
 
 #### Cypress
+e2e testing where done with cypress. Just one test was done [Search E2E Test](https://github.com/ezehurt/rick-and-morty/blob/development/cypress/e2e/search/search.cy.js). 
+![image](https://user-images.githubusercontent.com/7167879/176389412-3b5e244d-b533-4bf7-981e-1970d113a5d9.png)
+
 #### Styling, scss, grid-flexbox combination
 In the project I installed node-sass to get all it benefits of variables and functions. Also a combination of flexbox and grid where done. You can check for example [here](https://github.com/ezehurt/rick-and-morty/blob/main/src/components/searchbar/autosuggestion-searchbar/autosuggestion-searchbar.scss) where the background is setted on the same "place" of the autosuggestionbar. 
 Here there is an image of chrome dev tools

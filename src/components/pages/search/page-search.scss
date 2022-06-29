@@ -20,4 +20,14 @@
         display: flex;
         justify-content: center;
     }
+    &__subheader{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        border-bottom: 1px solid color(border, 500);
+        .result-header {
+            grid-area: 2/2/3/-2;
+            display: flex;
+            justify-content: center;
+        }
+    }
 }

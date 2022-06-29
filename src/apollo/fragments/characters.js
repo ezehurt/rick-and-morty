@@ -24,3 +24,12 @@ export const CHARACTERS_LOCATION_FIELDS = gql`
             name
     }
 `;
+
+export const PAGING_INFO_FIELDS = gql`
+    fragment pagingInfoFields on Info {
+        count
+        pages
+        next
+        prev
+    }
+`;

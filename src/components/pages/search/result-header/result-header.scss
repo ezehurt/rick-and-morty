@@ -1,0 +1,7 @@
+.result-header {
+    color: color(font, 100);
+    h4 {
+        margin: 12px;
+        @extend .heading-medium;
+    }
+}

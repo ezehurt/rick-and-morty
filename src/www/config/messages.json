@@ -1,5 +1,7 @@
 {
     "autocomplete.placeholder": "Star typing a character name",
     "welcome.title": "Welcome to Ezequiel Julian Hurt Bayer Challenge.",
-    "welcome.message": "Star typing to the name of a character to find Rick and Morty’s characters"
+    "welcome.message": "Star typing to the name of a character to find Rick and Morty’s characters",
+    "no-result.title": "No result were found",
+    "no-result.message": "Sorry, no results where found for search term: {searchTerm}"
 }

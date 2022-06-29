@@ -22,7 +22,7 @@ function Suggestions({
         isOpen,
         {
             key: "Enter", callback: (selected) => {
-                handleClick(suggestions[selected]?.name || suggestions[selected] || null)
+                handleClick(suggestions[selected]?.name || null)
             }
         }
     );
@@ -60,7 +60,7 @@ function Suggestions({
                 <ul className="suggestion__list" data-testid="suggestion-testid">
                     {texts.map((suggestion, index) => (
                         <SuggestionItem
-                            key={`suggestion-${index}`}
+                            key={`suggestion-${suggestion.id}`}
                             text={suggestion.name}
                             onClick={() => handleClick(suggestion.name || null)}
                             imgSrc={suggestion.image}

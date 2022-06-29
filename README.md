@@ -57,7 +57,9 @@ Once we have the functional requirements and the ux/ui we need to organize the s
   - When user types something into the searchbar they should be presented with suggeste character names.
   - If pressing enter, the character results should be display.
   - If user click on the suggestion, the result should be shown.
-It seems to be short and easy user story, but anyway needs some work and planning. A Trello board was created to manage the proyect. Task were created, tagged by type, prioritazed, etc.
+It seems to be short and easy user story, but anyway needs some work and planning. A [Trello board that you can access](https://trello.com/b/JbeoJ6r4/code-challenge) was created to manage the proyect. Task were created, tagged by type, prioritazed, etc.
+![trello-1](https://user-images.githubusercontent.com/7167879/176379035-9c8e0d86-4a10-4484-a4c0-ab8d7bcda12c.png)
+
 ### Hands on mud
 #### React project.
 ##### Version
@@ -86,24 +88,34 @@ The application have the redux-toolkit for managing the store, with slices, acti
 - Component state (useState)
 #### Github with "git flow"
 For source control versioning, I used github basically with a main branch, a development branch and "features" branches.
+![git-1](https://user-images.githubusercontent.com/7167879/176379090-6acdfd48-7094-4725-892d-abffa8d2ee2b.png)
+
 #### Storybook
-Storybook is great and is one of the tools that are really close tu ux/ui. Trying to be the "design system source of truth", small components with no other logic than the behaviour are displayed there. Developers can access the storybook, see how components works, change styles and directly copy code to paste on their IDE. You can see the storybook for this project here
+Storybook is great and is one of the tools that are really close tu ux/ui. Trying to be the "design system source of truth", small components with no other logic than the behaviour are displayed there. Developers can access the storybook, see how components works, change styles and directly copy code to paste on their IDE. You can see the storybook for this project here.
+![storybook-1](https://user-images.githubusercontent.com/7167879/176379122-d54d047e-5211-475c-bfd7-17afd2d6ec39.png)
+
 #### Cypress
 #### Styling, scss, grid-flexbox combination
 In the project I installed node-sass to get all it benefits of variables and functions. Also a combination of flexbox and grid where done. You can check for example [here](https://github.com/ezehurt/rick-and-morty/blob/main/src/components/searchbar/autosuggestion-searchbar/autosuggestion-searchbar.scss) where the background is setted on the same "place" of the autosuggestionbar. 
-
+Here there is an image of chrome dev tools
+![grid-flex-1](https://user-images.githubusercontent.com/7167879/176379831-60d6711c-c4ee-4ade-9ba0-0c99443e5031.png)
 
 ### Restrictions of the challenge.
 #### The API.
 One of the acceptance criteria of the app if to show suggestions by character names to the user. Those suggestions can more or less be done but I personally don't like how is it. Normally it should be a grapqhl query to get suggestions. You send the term and depending on the type of search you choose(for this example only by name) you get the suggestions. Or going further, maybe you can write a term and you get suggestions of many types, e.g. If you write "rick", you can get suggestions of name, episodes, locations and in the suggestions menu showed in the app, diff them with icons, etc. Doing more likely a fulltext search with differents suggestions types.
 
-
-
 ### Tools
 #### Chrome Developers tool 
-#### Extensions
-#### Css Grid
+##### Extensions
+ - [Altair](https://chrome.google.com/webstore/detail/altair-graphql-client/flnheeellpciglgpaodhkhmapeljopja)
+ - [GraphQL Network](https://chrome.google.com/webstore/detail/graphql-network-inspector/ndlbedplllcgconngcnfmkadhokfaaln?hl=en-GB)
+ - [Redux](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=es)
+ - [React Developer Tools] (https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
 #### Visual Studio Code
+##### Extensions
+ - Eslint
+ - SonarLint
+ - GitBlame
 #### SourceTree
 
 

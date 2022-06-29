@@ -1,4 +1,4 @@
-import { useLazyQuery, useQuery } from '@apollo/client';
+import { useLazyQuery } from '@apollo/client';
 import React, { useEffect } from 'react'
 import { useIntl } from 'react-intl'
 import { useDispatch } from 'react-redux';
@@ -45,9 +45,12 @@ function PageSearch() {
 
 
     useEffect(() => {
+        if(data){
+            console.log("Results: ", data.characters?.results?.length)
+            console.log("Also should set pagination stuff ")
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data]);
-
 
     return (
         <main className='page-search'>
@@ -59,7 +62,7 @@ function PageSearch() {
                     })}
                 />
             </div>
-            {data && <div className='page-search__result-list'>
+            {data && data.characters.results.length > 0 && <div className='page-search__result-list'>
                 {data.characters.results.map((character) => (
                     <CharacterCard
                         key={character.id}
@@ -73,7 +76,15 @@ function PageSearch() {
                     />
                 ))}
             </div>}
-            {!data && <div className='page-search__centered-content'>
+            {data && data.characters.results.length === 0 &&
+                <div className='page-search__centered-content'>
+                <Message
+                    imgSrc={WELCOME_IMG}
+                    imgAlt="welcome-message"
+                    title={intl.formatMessage({ id: "no-result.title" })}
+                    message={intl.formatMessage({ id: "no-result.message" }, {searchTerm: term})} /></div>
+            }
+            {!data && !loading && <div className='page-search__centered-content'>
                 <Message
                     imgSrc={WELCOME_IMG}
                     imgAlt="welcome-message"

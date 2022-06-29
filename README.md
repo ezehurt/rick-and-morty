@@ -65,16 +65,16 @@ It seems to be short and easy user story, but anyway needs some work and plannin
 ##### Version
 To solve the challenge I decided to start with create-react-app tool. The project was created in the 18 version, but after some weird behaivours that I didn't want to handle it (because of time) I had to downgrade the version to the most known by me.  
 ##### Project structure
-The project have a basic structre:
--src
---apollo <- for configuring apollo client, fragments and mutations
---common <- basic common stuff like utils, constans and route history
---components <- components that be reused
---hooks <- hooks. I always check on [react-use](https://github.com/streamich/react-use) and sometimes copy all and sometimes take as starting point
---state <- The redux store and state management
---stories <- default stortbook folder.
---style-helpers <- basic styling for share, mixins, etc
---widgets <- litle piece of code with no state such as buttons, etc.
+The project have a basic structre:<br/>
+-src <br/>
+--apollo <- for configuring apollo client, fragments and mutations <br/>
+--common <- basic common stuff like utils, constans and route history <br/>
+--components <- components that be reused <br/>
+--hooks <- hooks. I always check on [react-use](https://github.com/streamich/react-use) and sometimes copy all and sometimes take as starting point <br/>
+--state <- The redux store and state management <br/>
+--stories <- default stortbook folder. <br/>
+--style-helpers <- basic styling for share, mixins, etc <br/>
+--widgets <- litle piece of code with no state such as buttons, etc. <br/>
 
 ##### Unit testing
 Normally every component should have a unit testing and also there are metrics to achieve regarding test coverage. For this challenge I wrote just one test for the [MessageComponent](https://github.com/ezehurt/rick-and-morty/blob/main/src/components/layout/message/Mesage.test.jsx)

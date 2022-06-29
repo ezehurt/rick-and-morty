@@ -39,11 +39,89 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## ABOUT THE RESOLUTION OF THE CHALLENGE
-### The Process
+## About the resolution of the challenge
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The app is deployed on Firebase hosting. [Click here to visit it](https://bayer-challenge-eh.web.app/)
+
+### Functional Requirements.
+"**As** an user, **I want** to search by name Rick and Morty's characters **fpr** watch the results"
+### Non Functional Requirements.
+Nothing was said about the end device where the application will run. Because the app is for searching and I think in the company the one that could use the app are researchers from their desktop PC, no many optimization for running on mobile where done. Even dough some breakpoints and good practices for responsiveness where done, is not optimizated.
+There basics non functional requirements that are related to performance, mantainability, etc. are tried to be achieved by software practices and patterns into the code.
+### The Process
+#### Prerequisites
+Apart from the requiremets also for frontend development the suer experience and user interface is needed. For the UI a basic design was done in AdobeXD and then exported to Zeplin. In case of UX (overflow)
+As a frontend developer is really important to pay attention and be part of this process for many reasons:
+1. Designers also split the application in small components and you get a first impression of how many components will have the app, first approach to reusability, etc.
+2. Basic behaiviour.
+3. Early identify undoable stuff.
+#### Organizing stuff, planning and estimating.
+Once we have the functional requirements and the ux/ui we need to organize the stuff and have a plan. In this case, this small challenge could be seen as one user story "**As** an user, **I want** to search by name Rick and Morty's characters **fpr** watch the results". The acceptance criterias of the story was defined by the challenge and basically are:
+  - When user types something into the searchbar they should be presented with suggeste character names.
+  - If pressing enter, the character results should be display.
+  - If user click on the suggestion, the result should be shown.
+It seems to be short and easy user story, but anyway needs some work and planning. A [Trello board that you can access](https://trello.com/b/JbeoJ6r4/code-challenge) was created to manage the proyect. Task were created, tagged by type, prioritazed, etc.
+![trello-1](https://user-images.githubusercontent.com/7167879/176379035-9c8e0d86-4a10-4484-a4c0-ab8d7bcda12c.png)
+
+### Hands on mud
+#### React project.
+##### Version
+To solve the challenge I decided to start with create-react-app tool. The project was created in the 18 version, but after some weird behaivours that I didn't want to handle it (because of time) I had to downgrade the version to the most known by me.  
+##### Project structure
+The project have a basic structre:<br/>
+-src <br/>
+--apollo <- for configuring apollo client, fragments and mutations <br/>
+--common <- basic common stuff like utils, constans and route history <br/>
+--components <- components that be reused <br/>
+--hooks <- hooks. I always check on [react-use](https://github.com/streamich/react-use) and sometimes copy all and sometimes take as starting point <br/>
+--state <- The redux store and state management <br/>
+--stories <- default stortbook folder. <br/>
+--style-helpers <- basic styling for share, mixins, etc <br/>
+--widgets <- litle piece of code with no state such as buttons, etc. <br/>
+
+##### Unit testing
+Normally every component should have a unit testing and also there are metrics to achieve regarding test coverage. For this challenge I wrote just one test for the [MessageComponent](https://github.com/ezehurt/rick-and-morty/blob/main/src/components/layout/message/Mesage.test.jsx)
+
+##### The states
+There many ways to manage the state of one app. Always trying to avoid complexity. For this case I decided to mantain the state in 3 differents ways.
+- The url state
+This is something desirable when you try to have a consistency between the app state and the url. In some, sometimes is good for users to share directly the link with other users. When others users paste the url on their browsers, the parameters are got and the app will start loading and requesting all the necesary stuff to show the user the same. e.g If you pase this on your browser, you will se the same search term and results(if anything on the search response change) [DEMO APP LINK](https://bayer-challenge-eh.web.app/q?q=rick). Pay attention that the search term is "rick" and remains on the url 
+- The redux state
+The application have the redux-toolkit for managing the store, with slices, action creators, selectos. You can see an example [search state](https://github.com/ezehurt/rick-and-morty/blob/main/src/state/search.js). Where the "paginationInfo" is used in the [SearchComponent](https://github.com/ezehurt/rick-and-morty/blob/main/src/components/pages/search/PageSearch.jsx)
+- Component state (useState)
+#### Github with "git flow"
+For source control versioning, I used github basically with a main branch, a development branch and "features" branches.
+![git-1](https://user-images.githubusercontent.com/7167879/176379090-6acdfd48-7094-4725-892d-abffa8d2ee2b.png)
+
+#### Storybook
+Storybook is great and is one of the tools that are really close tu ux/ui. Trying to be the "design system source of truth", small components with no other logic than the behaviour are displayed there. Developers can access the storybook, see how components works, change styles and directly copy code to paste on their IDE. You can see the storybook for this project [here](https://storybook-bayer-challenge-eh.web.app/?path=/story/components-charactercard--default). You can play around with some components
+![storybook-1](https://user-images.githubusercontent.com/7167879/176379122-d54d047e-5211-475c-bfd7-17afd2d6ec39.png)
+
+#### Cypress
+e2e testing where done with cypress. Just one test was done [Search E2E Test](https://github.com/ezehurt/rick-and-morty/blob/development/cypress/e2e/search/search.cy.js). 
+![image](https://user-images.githubusercontent.com/7167879/176389412-3b5e244d-b533-4bf7-981e-1970d113a5d9.png)
+
+#### Styling, scss, grid-flexbox combination
+In the project I installed node-sass to get all it benefits of variables and functions. Also a combination of flexbox and grid where done. You can check for example [here](https://github.com/ezehurt/rick-and-morty/blob/main/src/components/searchbar/autosuggestion-searchbar/autosuggestion-searchbar.scss) where the background is setted on the same "place" of the autosuggestionbar. 
+Here there is an image of chrome dev tools
+![grid-flex-1](https://user-images.githubusercontent.com/7167879/176379831-60d6711c-c4ee-4ade-9ba0-0c99443e5031.png)
+
+### Restrictions of the challenge.
+#### The API.
+One of the acceptance criteria of the app if to show suggestions by character names to the user. Those suggestions can more or less be done but I personally don't like how is it. Normally it should be a grapqhl query to get suggestions. You send the term and depending on the type of search you choose(for this example only by name) you get the suggestions. Or going further, maybe you can write a term and you get suggestions of many types, e.g. If you write "rick", you can get suggestions of name, episodes, locations and in the suggestions menu showed in the app, diff them with icons, etc. Doing more likely a fulltext search with differents suggestions types.
 
 ### Tools
+#### Chrome Developers tool 
+##### Extensions
+ - [Altair](https://chrome.google.com/webstore/detail/altair-graphql-client/flnheeellpciglgpaodhkhmapeljopja)
+ - [GraphQL Network](https://chrome.google.com/webstore/detail/graphql-network-inspector/ndlbedplllcgconngcnfmkadhokfaaln?hl=en-GB)
+ - [Redux](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=es)
+ - [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
+#### Visual Studio Code
+##### Extensions
+ - Eslint
+ - SonarLint
+ - GitBlame
+#### SourceTree
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
